@@ -48,7 +48,7 @@ export default function App() {
         <Gear />
         <About />
         <CV />
-        <div className="section grid grid-cols-[minmax(0,1fr)] gap-16 !pt-0 lg:grid-cols-[minmax(0,8fr)_minmax(0,5fr)] lg:gap-10">
+        <div className="section grid grid-cols-[minmax(0,1fr)] gap-14 !pt-0 xl:grid-cols-[minmax(0,8fr)_minmax(0,4fr)] xl:gap-10">
           <Awards />
           <Languages />
         </div>

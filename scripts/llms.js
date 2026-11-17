@@ -1,5 +1,8 @@
-// Builds /llms.txt and /llms-full.txt (https://llmstxt.org) from src/data/portfolio.js,
-// so AI assistants can read the portfolio without running its JavaScript.
+// Builds the Markdown files AI assistants read instead of running the site's JavaScript
+// (https://llmstxt.org), from src/data/portfolio.js:
+//   /llms.md      summary with links (also served as /llms.txt, the standard name)
+//   /llms-full.md everything: projects, background, awards, languages and skills
+//                 (also served as /llms-full.txt and /index.html.md)
 import { about, awards, camps, cv, focus, fullName, gear, languages, person } from '../src/data/portfolio.js'
 
 const es = (v) => (v && typeof v === 'object' && !Array.isArray(v) && 'es' in v ? v.es : v)
@@ -41,7 +44,7 @@ ${list(ranked.map(projectLine))}
 
 ## Optional
 
-- [Contenido completo](${url}/llms-full.txt): proyectos, trayectoria, premios, idiomas y habilidades en detalle
+- [Contenido completo](${url}/llms-full.md): proyectos, trayectoria, premios, idiomas y habilidades en detalle
 `
 }
 
@@ -122,9 +125,15 @@ ${list(gear.map((g) => `${es(g.title)}: ${g.items.join(', ')}`))}
 `
 }
 
-// Vite plugin: serves both files in dev and emits them into the build.
+// Vite plugin: serves the files in dev and emits them into the build.
 export default function llms() {
-  const files = { '/llms.txt': llmsTxt, '/llms-full.txt': llmsFullTxt }
+  const files = {
+    '/llms.md': llmsTxt,
+    '/llms.txt': llmsTxt,
+    '/llms-full.md': llmsFullTxt,
+    '/llms-full.txt': llmsFullTxt,
+    '/index.html.md': llmsFullTxt,
+  }
   return {
     name: 'suito-llms-txt',
     configureServer(server) {

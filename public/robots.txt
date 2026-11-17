@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-# Plain-text version of this portfolio for AI assistants: /llms.txt and /llms-full.txt
+# AI assistants: this portfolio in Markdown at /llms.md (summary) and /llms-full.md (full).
+# Also available as /llms.txt and /llms-full.txt (https://llmstxt.org).

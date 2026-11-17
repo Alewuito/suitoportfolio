@@ -57,9 +57,9 @@ export default function Contact() {
       <div className="section relative !pb-20 md:!pb-10">
         <div data-group>
           <p data-reveal className="eyebrow">
-            07 — {t.contact.eyebrow}
+            {t.contact.eyebrow}
           </p>
-          <h2 id="contacto-title" data-split className="display display--wrap mt-6 text-[clamp(3.2rem,9.6vw,11rem)]">
+          <h2 id="contacto-title" data-split className="display display--wrap mt-5 t-6">
             {t.contact.title}
           </h2>
           <p data-reveal className="mt-8 max-w-xl text-base leading-relaxed sm:text-lg">

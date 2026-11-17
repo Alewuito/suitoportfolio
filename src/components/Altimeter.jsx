@@ -15,7 +15,7 @@ export default function Altimeter() {
     let wasSummit = altitude.get().summit
     const paint = ({ value, summit }) => {
       text.current.textContent = summit
-        ? `${formatAlt(value, lang)} m — ${t.route.summitWord}`
+        ? `${formatAlt(value, lang)} m · ${t.route.summitWord}`
         : `ALT ${pad4(value)} m`
       if (summit && !wasSummit && window.matchMedia(MOTION_OK).matches) {
         gsap.fromTo(
@@ -36,7 +36,7 @@ export default function Altimeter() {
       ref={box}
       data-altimeter
       aria-hidden="true"
-      className="altimeter fixed bottom-[18px] right-[18px] z-[55] flex origin-right items-center gap-2 rounded-full bg-[#0a0a0c]/85 px-3 py-2 md:bottom-auto md:right-[30px] md:top-[24px] md:origin-top-right md:bg-transparent md:p-0"
+      className="altimeter fixed bottom-[18px] right-[18px] z-[55] flex origin-right items-center gap-2 rounded-full bg-[#0a0a0c]/85 px-3 py-2 lg:bottom-auto lg:right-[30px] lg:top-[24px] lg:origin-top-right lg:bg-transparent lg:p-0"
     >
       <Peak className="h-3 w-3 text-moss" />
       <span ref={text}>ALT 0000 m</span>

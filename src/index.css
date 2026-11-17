@@ -11,7 +11,7 @@
 }
 
 /* The pinned, scrubbed ascent: wide screens with motion allowed. */
-@custom-variant cine (@media (min-width: 768px) and (prefers-reduced-motion: no-preference));
+@custom-variant cine (@media (min-width: 1024px) and (prefers-reduced-motion: no-preference));
 
 :root {
   --frame: #08080a;
@@ -24,6 +24,13 @@
   --mat: 7px;
   --radius: 20px;
   --expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Type scale: major third (1.25) from 16px, fluid between phone and desktop. */
+  --step-1: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --step-2: clamp(1.25rem, 1.1rem + 0.6vw, 1.5625rem);
+  --step-3: clamp(1.5rem, 1.25rem + 1vw, 1.95rem);
+  --step-4: clamp(1.8rem, 1.4rem + 1.7vw, 2.45rem);
+  --step-5: clamp(2.2rem, 1.55rem + 2.8vw, 3.8rem);
+  --step-6: clamp(2.6rem, 1.6rem + 4.4vw, 5.6rem);
 }
 
 @layer base {
@@ -67,10 +74,6 @@
 .grain { position:absolute; inset:0; pointer-events:none; opacity:.16; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:200px 200px; animation:grain .6s steps(2) infinite; }
 @keyframes grain { 0%{transform:translate(0,0)} 50%{transform:translate(-6px,4px)} 100%{transform:translate(4px,-3px)} }
 .grade { position:absolute; inset:0; pointer-events:none; background: radial-gradient(120% 90% at 78% 30%, rgba(0,0,0,0) 35%, rgba(6,5,4,.35) 100%), linear-gradient(180deg, rgba(6,5,4,.30) 0%, rgba(6,5,4,0) 22%, rgba(6,5,4,0) 55%, rgba(6,5,4,.62) 100%); }
-.tab-notch { --tab:#0a0a0c; }
-.tab-notch::before, .tab-notch::after { content:""; position:absolute; top:0; width:22px; height:22px; background:transparent; }
-.tab-notch::before { left:-22px; border-top-right-radius:22px; box-shadow:11px 0 0 0 var(--tab); }
-.tab-notch::after { right:-22px; border-top-left-radius:22px; box-shadow:-11px 0 0 0 var(--tab); }
 @media (prefers-reduced-motion: reduce) { .grain { animation:none; } }
 
 @layer components {
@@ -113,7 +116,7 @@
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 0.82;
-    font-size: clamp(7rem, 29vw, 25rem);
+    font-size: clamp(5.5rem, 24vw, 20rem);
     color: var(--cream);
   }
   .display {
@@ -123,13 +126,25 @@
     color: var(--cream);
   }
   .display--wrap {
-    line-height: 0.92;
+    line-height: 1;
     text-wrap: balance;
+  }
+  .t-1 { font-size: var(--step-1); }
+  .t-2 { font-size: var(--step-2); }
+  .t-3 { font-size: var(--step-3); }
+  .t-4 { font-size: var(--step-4); }
+  .t-5 { font-size: var(--step-5); }
+  .t-6 { font-size: var(--step-6); }
+  /* Long words (e.g. "Ciberseguridad") wrap inside their card instead of spilling out. */
+  .card-frame :is(h3, h4, p, dd, li) {
+    overflow-wrap: break-word;
+    hyphens: auto;
+    min-width: 0;
   }
   .eyebrow {
     font-size: 0.6875rem;
     font-weight: 500;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: color-mix(in srgb, var(--cream) 62%, transparent);
   }
@@ -447,11 +462,14 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  /* Mobile: long lists of cards become a swipeable row instead of a tall stack. */
-  @media (max-width: 767.98px) {
+  /* Phones and tablets: long lists of cards become a swipeable row of equal cards. */
+  @media (max-width: 1023.98px) {
     .swipe {
+      /* positioned, so visually hidden (absolute) text inside stays clipped */
+      position: relative;
       display: flex;
-      gap: 0.75rem;
+      align-items: stretch;
+      gap: 1rem;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-padding-inline: 1.5rem;
@@ -464,9 +482,39 @@
       display: none;
     }
     .swipe > * {
-      flex: 0 0 84%;
+      flex: 0 0 min(86%, 24rem);
       scroll-snap-align: start;
     }
+  }
+  @media (min-width: 640px) and (max-width: 1023.98px) {
+    .swipe {
+      scroll-padding-inline: clamp(1.5rem, 5vw, 5rem);
+      margin-inline: calc(-1 * clamp(1.5rem, 5vw, 5rem));
+      padding-inline: clamp(1.5rem, 5vw, 5rem);
+    }
+    .swipe > * {
+      flex-basis: min(46%, 24rem);
+    }
+  }
+  /* Floating quick-access nav. */
+  .nav-pill {
+    border: 1px solid color-mix(in srgb, var(--cream) 12%, transparent);
+    background: color-mix(in srgb, #0a0a0c 82%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.8);
+  }
+  .nav-link {
+    border-radius: 999px;
+    color: color-mix(in srgb, var(--cream) 72%, transparent);
+    transition: color 0.3s var(--expo), background-color 0.3s var(--expo);
+  }
+  .nav-link:hover {
+    color: var(--cream);
+  }
+  .nav-link[aria-current="true"] {
+    color: var(--cream);
+    background: color-mix(in srgb, var(--cream) 12%, transparent);
   }
   .mini-label {
     font-family: var(--font-sans);
@@ -478,6 +526,14 @@
   }
 
   /* ---------- Altimeter ---------- */
+  @media (max-width: 1023.98px) {
+    [data-altimeter] {
+      transition: opacity 0.4s var(--expo);
+    }
+    html:not([data-in-route]) [data-altimeter] {
+      opacity: 0;
+    }
+  }
   .altimeter {
     font-size: 0.6875rem;
     font-weight: 500;

@@ -27,7 +27,12 @@ Todos los textos y datos están en `src/data/portfolio.js`, en español e inglé
 
 ## Lectura por IA
 
-Cada compilación genera `/llms.txt` y `/llms-full.txt` ([llmstxt.org](https://llmstxt.org)) a partir de los mismos datos (`scripts/llms.js`), para que los asistentes de IA puedan leer el portfolio sin ejecutar JavaScript. `index.html` incluye además datos estructurados de schema.org.
+Cada compilación genera, a partir de los mismos datos (`scripts/llms.js`), la versión en Markdown que leen los asistentes de IA sin ejecutar JavaScript ([llmstxt.org](https://llmstxt.org)):
+
+- `/llms.md` (también `/llms.txt`): resumen con enlaces.
+- `/llms-full.md` (también `/llms-full.txt` e `/index.html.md`): todo el contenido.
+
+`index.html` los enlaza desde la cabecera y desde lo primero del cuerpo, e incluye datos estructurados de schema.org.
 
 ## Publicación
 

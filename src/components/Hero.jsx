@@ -98,7 +98,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <h1 data-wordmark className="wordmark shrink-0" aria-label={`${person.alias} — ${fullName}`}>
+        <h1 data-wordmark className="wordmark shrink-0" aria-label={`${person.alias}, ${fullName}`}>
           <span aria-hidden="true">{person.alias}</span>
         </h1>
       </div>

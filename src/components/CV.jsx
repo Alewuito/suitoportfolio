@@ -30,12 +30,12 @@ function Entry({ entry, index }) {
           <span className="eyebrow">{t.cv.types[entry.type]}</span>
           <AreaTags ids={entry.areas} />
         </div>
-        <h4 data-reveal className="mt-2 text-[clamp(1.3rem,2vw,1.6rem)] font-bold leading-tight tracking-[-0.02em] text-cream">
+        <h4 data-reveal className="mt-2 t-2 font-bold leading-tight tracking-[-0.015em] text-cream">
           {pick(entry.title)}
         </h4>
-        <p data-reveal className="mt-1 text-[15px] italic text-cream/80">
+        <p data-reveal className="mt-1 text-[15px] text-cream/80">
           {pick(entry.subtitle)}
-          {entry.tools && <span className="not-italic text-cream/55"> · {pick(entry.tools)}</span>}
+          {entry.tools && <span className="text-cream/55"> · {pick(entry.tools)}</span>}
         </p>
         {entry.repo && (
           <a
@@ -101,14 +101,14 @@ export default function CV() {
 
   return (
     <section ref={root} id="cv" aria-labelledby="cv-title" className="section">
-      <SectionHead index="04" eyebrow={t.cv.eyebrow} title={t.cv.title} lead={t.cv.lead} id="cv-title" />
+      <SectionHead eyebrow={t.cv.eyebrow} title={t.cv.title} lead={t.cv.lead} id="cv-title" />
 
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
-        <article data-group className="card-frame p-7">
+        <article data-group className="card-frame p-6 sm:p-7">
           <h3 data-reveal className="eyebrow">
             {t.cv.education}
           </h3>
-          <p data-reveal className="mt-5 text-2xl font-medium leading-tight text-cream">
+          <p data-reveal className="mt-4 t-2 font-medium leading-tight text-cream">
             {pick(education.title)}
           </p>
           <p data-reveal className="mt-2 text-sm text-cream/70">
@@ -129,7 +129,7 @@ export default function CV() {
           </ul>
         </article>
 
-        <article data-group className="card-frame flex flex-col p-7">
+        <article data-group className="card-frame flex flex-col p-6 sm:p-7">
           <h3 data-reveal className="eyebrow">
             {t.cv.skills}
           </h3>
@@ -161,7 +161,7 @@ export default function CV() {
       </div>
 
       <h3 className="eyebrow mt-14">{t.cv.timeline}</h3>
-      <ol className="mt-7 grid gap-x-14 gap-y-10 lg:grid-cols-2">
+      <ol className="mt-7 grid gap-x-14 gap-y-9 lg:grid-cols-2">
         {entries.map((entry, i) => (
           <Entry key={i} entry={entry} index={i} />
         ))}

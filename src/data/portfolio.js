@@ -96,6 +96,7 @@ export const focus = [
 // private: the repository is private, so the link may not open for visitors.
 // team: the repository belongs to a teammate (I am a contributor).
 // stack: names that match an item in `gear` light up on the gear map.
+// tools: extra items found in the repository (CI, containers, scripts), only used for the gear map.
 export const camps = [
   {
     id: 'traffic-lights-arena',
@@ -114,6 +115,7 @@ export const camps = [
     },
     stack: { es: ['Python', 'Agentes de IA', 'Cursor'], en: ['Python', 'AI agents', 'Cursor'] },
     links: { code: 'https://github.com/arrozet/cursor-semaphore', demo: null },
+    tools: ['Git'],
     team: true,
   },
   {
@@ -129,6 +131,7 @@ export const camps = [
     role: { es: 'Proyecto personal', en: 'Personal project' },
     stack: ['JavaScript', 'HTML5', 'CSS3', 'Chart.js', 'localStorage'],
     links: { code: 'https://github.com/Alewuito/SuitoFocus', demo: null },
+    tools: ['Git'],
   },
   {
     id: 'ai-finops-mercedes',
@@ -147,6 +150,7 @@ export const camps = [
     },
     stack: ['TypeScript', 'JavaScript', 'Python'],
     links: { code: 'https://github.com/agomesc1503/AI-FinOps-Mercedes', demo: null },
+    tools: ['React', 'Vite', 'Pandas', 'Docker', 'Docker Compose', 'Git'],
     team: true,
   },
   {
@@ -163,6 +167,7 @@ export const camps = [
     role: { es: 'Hackathon en equipo de 3 personas', en: 'Hackathon, team of 3' },
     stack: ['Go', 'Fiber', 'DuckDB', 'React', 'TypeScript', 'Three.js', 'ECharts', 'Docker'],
     links: { code: 'https://github.com/Alewuito/gsec-soc-platform', demo: null },
+    tools: ['Vite', 'PostgreSQL', 'Docker Compose', 'Nginx', 'GitHub Actions', 'PowerShell', 'Git'],
     private: true,
   },
   {
@@ -183,6 +188,7 @@ export const camps = [
     role: { es: 'Equipo de 3 (UMA × IoBuilders)', en: 'Team of 3 (UMA × IoBuilders)' },
     stack: ['Go', 'DAML', 'Canton', 'gRPC', 'Docker', 'Prometheus', 'Grafana', 'Playwright'],
     links: { code: 'https://github.com/JavierStark/Project-CantonDaml-IoBuilders-UMA', demo: null },
+    tools: ['JavaScript', 'Docker Compose', 'OpenTelemetry', 'Git'],
     team: true,
   },
   {
@@ -211,6 +217,7 @@ export const camps = [
     },
     stack: ['JavaScript', 'PWA', 'Web Audio', 'MediaPipe Pose', 'Cloudflare Workers', 'Python'],
     links: { code: 'https://github.com/Alewuito/codazo', demo: null },
+    tools: ['HTML5', 'CSS3', 'GitHub Actions', 'PowerShell', 'Git'],
     private: true,
     soon: true,
   },
@@ -236,7 +243,17 @@ export const gear = [
   {
     id: 'platform',
     title: { es: 'Plataforma y herramientas', en: 'Platform & Tools' },
-    items: ['Git', 'Linux', 'Ubuntu', 'Windows', 'Bash', 'Docker', 'Vercel', 'LaTeX'],
+    items: ['Git', 'Linux', 'Ubuntu', 'Windows', 'Bash', 'PowerShell', 'Cursor', 'LaTeX'],
+  },
+  {
+    id: 'deploy',
+    title: { es: 'Despliegue y CI/CD', en: 'Deployment & CI/CD' },
+    items: ['GitHub Actions', 'Docker', 'Docker Compose', 'Nginx', 'Cloudflare Workers', 'Vercel'],
+  },
+  {
+    id: 'observability',
+    title: { es: 'Observabilidad y pruebas', en: 'Observability & Testing' },
+    items: ['OpenTelemetry', 'Prometheus', 'Grafana', 'Playwright'],
   },
 ]
 

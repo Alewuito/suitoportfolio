@@ -111,9 +111,9 @@ export default function Camp({ camp, idPrefix = 'camp', compact = false }) {
   const titleId = `${idPrefix}-${camp.id}`
   const clamp = compact && !open
   return (
-    <article aria-labelledby={titleId} className="card-frame p-6 sm:p-7">
+    <article aria-labelledby={titleId} className="card-frame w-full p-6 sm:p-7">
       <CampMeta camp={camp} />
-      <h3 id={titleId} data-split className="display display--wrap mt-5 text-[clamp(1.9rem,min(3.3vw,5.6vh),3rem)]">
+      <h3 id={titleId} data-split className="display display--wrap mt-4 t-4">
         {camp.project}
       </h3>
       <div data-reveal>

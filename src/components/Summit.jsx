@@ -10,15 +10,15 @@ export default function Summit({ camp, idPrefix = 'camp', compact = false }) {
   const titleId = `${idPrefix}-${camp.id}`
   const short = compact && !open
   return (
-    <article aria-labelledby={titleId} className="card-frame p-7 sm:p-9">
+    <article aria-labelledby={titleId} className="card-frame w-full p-6 sm:p-8">
       <CampMeta camp={camp} />
-      <h3 id={titleId} data-split className="display mt-6 text-[clamp(3.2rem,min(6vw,10vh),5.75rem)]">
+      <h3 id={titleId} data-split className="display mt-5 t-6">
         {camp.project}
       </h3>
       {camp.motto && (
         <blockquote
           data-split
-          className="mt-4 text-[clamp(1.4rem,min(2.3vw,4.2vh),2.1rem)] font-medium italic leading-[1.05] tracking-[-0.02em] text-cream"
+          className="mt-4 t-2 font-medium italic leading-snug tracking-[-0.01em] text-cream"
         >
           «{camp.motto}»
         </blockquote>

@@ -54,6 +54,8 @@ export default function RouteTrail({ camps }) {
           end: 'bottom 35%',
           onToggle: (self) => {
             inView.current = self.isActive
+            // On phones and tablets the altimeter only shows along the route.
+            document.documentElement.toggleAttribute('data-in-route', self.isActive)
             const i = currentRef.current
             if (self.isActive) altitude.set(camps[i].altitude, i === n - 1)
           },
@@ -83,12 +85,13 @@ export default function RouteTrail({ camps }) {
 
   return (
     <div ref={root} className="mx-auto max-w-5xl px-5 pb-10 pt-20 sm:px-8 cine:hidden">
-      <p className="eyebrow">01 — {t.route.eyebrow}</p>
-      <h2 className="display mt-4 text-[clamp(3rem,13vw,6rem)]">{t.route.title}</h2>
+      <h2 className="display t-5">{t.route.title}</h2>
       <p className="mt-5 max-w-md text-[15px] leading-relaxed">{t.route.lead}</p>
 
       <div data-enter className="card-frame mt-8 px-4 pb-4 pt-3">
-        <MiniRoute current={current} label={t.gear.map} />
+        <div className="mx-auto max-w-md">
+          <MiniRoute current={current} label={t.gear.map} />
+        </div>
         <div className="mt-2 flex items-center justify-between gap-3">
           <p className="eyebrow truncate" aria-hidden="true">
             {pick(camp.camp)} · <span className="tabular-nums text-cream">{formatAlt(camp.altitude, lang)} m</span>
@@ -103,13 +106,13 @@ export default function RouteTrail({ camps }) {
         ref={track}
         data-enter
         aria-label={t.route.title}
-        className="no-scrollbar -mx-5 mt-4 flex snap-x snap-mandatory items-start gap-3 overflow-x-auto scroll-px-5 px-5 pb-2 sm:-mx-8 sm:scroll-px-8 sm:px-8"
+        className="no-scrollbar relative -mx-5 mt-4 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-px-5 px-5 pb-2 sm:-mx-8 sm:scroll-px-8 sm:px-8"
       >
         {camps.map((c, i) => (
           <li
             key={c.id}
             data-current={i === current}
-            className="w-[86%] max-w-[28rem] shrink-0 snap-start transition-opacity duration-500 data-[current=false]:opacity-60"
+            className="flex w-[86%] max-w-[26rem] shrink-0 snap-start transition-opacity duration-500 data-[current=false]:opacity-60 sm:w-[60%]"
           >
             {i === n - 1 ? <Summit camp={c} idPrefix="trail" compact /> : <Camp camp={c} idPrefix="trail" compact />}
           </li>

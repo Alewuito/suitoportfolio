@@ -374,8 +374,7 @@ export default function RouteAscent({ camps }) {
 
         {/* Section title */}
         <div className="absolute left-8 top-7 max-w-[18rem]">
-          <p className="eyebrow">01 — {t.route.eyebrow}</p>
-          <h2 className="display mt-3 text-[clamp(2rem,3.2vw,3rem)]">{t.route.title}</h2>
+          <h2 className="display t-4">{t.route.title}</h2>
           <p className="mt-4 text-[13px] leading-relaxed text-cream/70">{t.route.lead}</p>
         </div>
 

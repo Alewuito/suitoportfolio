@@ -14,16 +14,16 @@ export default function Languages() {
 
   return (
     <section ref={root} id="idiomas" aria-labelledby="idiomas-title">
-      <SectionHead index="06" eyebrow={t.languages.eyebrow} title={t.languages.title} id="idiomas-title" size="sm" />
-      <dl data-group className="card-frame mt-10 px-7 py-2">
+      <SectionHead title={t.languages.title} id="idiomas-title" size="sm" />
+      <dl data-group className="card-frame mt-8 px-6 py-1">
         {languages.map((lang) => (
           <div
             key={pick(lang.name)}
             data-reveal
-            className="flex items-baseline justify-between gap-6 border-b border-cream/12 py-5 last:border-b-0"
+            className="flex items-baseline justify-between gap-6 border-b border-cream/12 py-4 last:border-b-0"
           >
-            <dt className="text-lg font-medium text-cream">{pick(lang.name)}</dt>
-            <dd className="display display--wrap max-w-[65%] text-right text-[clamp(1.35rem,1.9vw,1.85rem)]">
+            <dt className="text-base font-medium text-cream">{pick(lang.name)}</dt>
+            <dd className="max-w-[62%] text-right text-base font-semibold leading-snug text-cream">
               {pick(lang.level)}
             </dd>
           </div>
