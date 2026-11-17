@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Plain-text version of this portfolio for AI assistants: /llms.txt and /llms-full.txt
