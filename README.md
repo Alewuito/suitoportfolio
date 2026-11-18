@@ -36,4 +36,4 @@ Cada compilación genera, a partir de los mismos datos (`scripts/llms.js`), la v
 
 ## Publicación
 
-El workflow `.github/workflows/deploy.yml` compila y publica la web en GitHub Pages en cada push a `main`. Para otro hosting (Vercel, Cloudflare Pages…) basta con `npm run build` y servir `dist/`.
+La web está en **https://suitoport.is-a.dev** (subdominio gratuito de [is-a.dev](https://is-a.dev) que apunta a GitHub Pages). El workflow `.github/workflows/deploy.yml` la compila y publica en cada push a `main`. Para otro hosting (Vercel, Cloudflare Pages…) basta con `npm run build` y servir `dist/`.
